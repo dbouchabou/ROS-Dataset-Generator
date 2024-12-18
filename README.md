@@ -1,7 +1,5 @@
 # ROS-Dataset-Generator
 
-# ROS-Dataset-Generator
-
 This repository provides a command-line tool to process ROS bag files and optionally generate videos or patches from recorded sensor data. It is designed to be flexible and configurable, allowing you to work with different robot configurations and video generation settings.
 
 ## Features
