@@ -22,6 +22,7 @@ This repository provides a command-line tool to process ROS bag files and option
 
 ## Repository Structure
 
+```
 .
 ├─ main.py                           # Entry point for the command-line tool
 ├─ core/
@@ -41,6 +42,7 @@ This repository provides a command-line tool to process ROS bag files and option
 │     ├─ robot_registry.py           # Robot registry for dynamic loading
 │     ├─ models/                     # Directory for robot model definitions
 └─ robots_configs/                   # Directory containing robot configuration JSON files
+```
 
 ## Requirements
 
