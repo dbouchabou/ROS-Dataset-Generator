@@ -1,0 +1,51 @@
+{
+    "image_topic": "/zed2/zed_node/rgb/image_rect_color",
+    "depth_topic": "/zed2/zed_node/depth/depth_registered",
+    "odom_topic": "/odometry/filtered/local",
+    "cmd_vel_topic": "/joy_teleop/cmd_vel",
+    "speed_treshold": 0.02,
+    "wheel_distance": 0.67,
+    "camera_intrinsics": [
+        [
+            528,
+            0,
+            636
+        ],
+        [
+            0,
+            528,
+            361
+        ],
+        [
+            0,
+            0,
+            1
+        ]
+    ],
+    "camera_extrinsics": [
+        [
+            0.01499944,
+            0.02499458,
+            0.99957505,
+            -0.06000000
+        ],
+        [
+            -0.99988750,
+            0.00037495,
+            0.01499475,
+            0.00500000
+        ],
+        [
+            0,
+            -0.99968752,
+            0.02499740,
+            0.77400000
+        ],
+        [
+            0,
+            0,
+            0,
+            1
+        ]
+    ]
+}

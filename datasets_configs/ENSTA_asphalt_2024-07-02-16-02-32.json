@@ -1,0 +1,9 @@
+{
+    "robot_config": "Husky",
+    "bag_files": [
+        {
+            "path": "/home/ubuntu/data/Navigating-the-Unknown/bagfiles/raw_bagfiles/Guillaume_D/juillet_rosbag/02/ENSTA_asphalt_2024-07-02-16-02-32.bag",
+            "label": "asphalt"
+        }
+    ]
+}
