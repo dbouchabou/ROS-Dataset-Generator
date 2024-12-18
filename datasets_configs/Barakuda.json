@@ -1,0 +1,9 @@
+{
+    "robot_config": "Barakuda",
+    "bag_files": [
+        {
+            "path": "/home/ubuntu/data/Dataset_generator/rosbags/barakuda/2024-10-29-15-43-56.bag",
+            "label": "asphalt"
+        }
+    ]
+}

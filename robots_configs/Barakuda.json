@@ -1,0 +1,51 @@
+{
+    "image_topic": "/zed2i/zed_node/rgb/image_rect_color",
+    "depth_topic": "/zed2i/zed_node/depth/depth_registered",
+    "odom_topic": "/imu/odometry",
+    "motor_rpm_topic": "/barakuda/motor_rpm",
+    "movement_threshold": 10.0,
+    "wheel_distance": 1,
+    "camera_intrinsics": [
+        [
+            266.16033935546875,
+            0,
+            320.167724609375
+        ],
+        [
+            0,
+            266.16033935546875,
+            168.49600219726562
+        ],
+        [
+            0,
+            0,
+            1
+        ]
+    ],
+    "camera_extrinsics": [
+        [
+            0.0000000,
+            -0.2384463,
+            0.9711557,
+            0.990
+        ],
+        [
+            -1.0000000,
+            0.0000000,
+            0.0000000,
+            0.060
+        ],
+        [
+            0.0000000,
+            -0.9711557,
+            -0.2384463,
+            0.750
+        ],
+        [
+            0,
+            0,
+            0,
+            1
+        ]
+    ]
+}

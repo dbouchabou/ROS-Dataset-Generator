@@ -1,0 +1,90 @@
+# video_config.yaml
+
+# Global video settings
+#----------------------
+# Frame rate settings:
+# - Set a specific value to override auto-detection
+# - Set to null or remove this line to use auto-detection from bag file
+frame_rate: null  # Auto-detect frame rate from bag file
+
+# Visualization options
+#---------------------
+# Draw robot's trajectory on the video frames
+draw_trajectories: true
+# Draw sampling patches on the video frames
+draw_patches: true
+
+# Robot path projection parameters
+#-------------------------------
+path_parameters:
+  # Robot path length to project in front of the robot (in meters)
+  # Larger values show more of the future path
+  D: 3.0
+  
+  # Distance between points on the projected path (in meters)
+  # Smaller values give smoother paths but increase computation
+  d: 0.5
+
+# Video type configurations
+#------------------------
+videos:
+  # Standard RGB video from camera
+  rgb:
+    enabled: true  # Set to false to skip RGB video generation
+    type: "rgb"    # Type must be "rgb" for RGB videos
+    filename_suffix: "RGB"  # Output will be {bagfile_name}_path_projection_RGB.mp4
+    
+  # Depth estimation using Depth Anything model
+  depth_anything:
+    enabled: true
+    type: "depth"
+    filename_suffix: "DepthAnythingV2"
+    depth_colormap: "inferno"  # Options: "inferno", "viridis", "plasma", "magma"
+    depth_model_config:
+      encoder: "vitl"         # Options: "vitb" (base) or "vitl" (large)
+      batch_size: 2          # Increase for faster processing if you have enough GPU memory
+      num_processes: 16      # Number of parallel processes for video generation
+      
+  # Normal maps generated from Depth Anything depth estimation
+  depth_anything_normal:
+    enabled: true
+    type: "normal"
+    filename_suffix: "DepthAnythingNormal"
+    depth_model_config:
+      encoder: "vitl"         # Options: "vitb" (base) or "vitl" (large)
+      batch_size: 2          # Increase for faster processing if you have enough GPU memory
+      num_processes: 16      # Number of parallel processes for video generation
+    # Note: Requires depth_anything to be enabled
+    
+  # Raw depth from depth sensor (e.g., ZED camera)
+  depth:
+    enabled: true
+    type: "depth"
+    filename_suffix: "Depth"
+    depth_colormap: "inferno"  # Same colormap options as depth_anything
+    
+  # Normal maps from raw depth sensor data
+  normal:
+    enabled: true
+    type: "normal"
+    filename_suffix: "Normal"
+    # Note: Requires depth video to be enabled
+
+# Notes:
+# - At least one video type must be enabled
+# - depth_anything_normal requires depth_anything to be enabled
+# - Each video will be saved as: {output_dir}/dataset_{dataset_name}/videos/{bagfile_name}_path_projection_{filename_suffix}.mp4
+# - Available colormaps (from matplotlib):
+#   * inferno: Black-red-yellow (good for depth visualization)
+#   * viridis: Blue-green-yellow (perceptually uniform)
+#   * plasma: Blue-red-yellow
+#   * magma: Black-red-white
+# - For depth_anything model:
+#   * vitl: Better quality but slower and needs more GPU memory
+#   * vitb: Faster but slightly lower quality
+# - Adjust batch_size based on your GPU memory:
+#   * Larger values = faster processing but more memory
+#   * Reduce if you get out of memory errors
+# - num_processes affects CPU usage and I/O:
+#   * Typically set to number of CPU cores
+#   * Reduce if experiencing memory issues

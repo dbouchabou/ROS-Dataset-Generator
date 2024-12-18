@@ -1,0 +1,50 @@
+{
+    "image_topic": "/camera/rgb",
+    "depth_topic": "/camera/d",
+    "odom_topic": "/localization/ekf",
+    "cmd_vel_topic": "/teleop/cmd_vel",
+    "speed_treshold": 0.02,
+    "camera_intrinsics": [
+        [
+            528,
+            0,
+            636
+        ],
+        [
+            0,
+            528,
+            361
+        ],
+        [
+            0,
+            0,
+            1
+        ]
+    ],
+    "camera_extrinsics": [
+        [
+            0.01499944,
+            0.02499458,
+            0.99957505,
+            -0.06000000
+        ],
+        [
+            -0.99988750,
+            0.00037495,
+            0.01499475,
+            0.00500000
+        ],
+        [
+            0,
+            -0.99968752,
+            0.02499740,
+            0.77400000
+        ],
+        [
+            0,
+            0,
+            0,
+            1
+        ]
+    ]
+}

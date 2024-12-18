@@ -1,0 +1,9 @@
+{
+    "robot_config": "Aru",
+    "bag_files": [
+        {
+            "path": "/home/ubuntu/bigdata2/ARU/Juin18.bag",
+            "label": "asphalt"
+        }
+    ]
+}
