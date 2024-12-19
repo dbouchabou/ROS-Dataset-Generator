@@ -176,30 +176,40 @@ class VideoGenerationManager:
 
         # Process shared Depth Anything pipeline if needed
         # depth_maps = None
-        # if self.video_pipeline_factory._needs_depth_anything_processing():
-        #     try:
-        #         console.print(
-        #             "[cyan]Processing Depth Anything shared pipeline...[/cyan]"
-        #         )
-        #         results = await self.video_pipeline_factory.registry.execute_pipeline(
-        #             "depth_anything_shared", initial_data
-        #         )
+        shared_pipeline = False
 
-        #         # Extract depth maps from results if successful
-        #         if results and "depth_maps" in results:
-        #             result = results["depth_maps"]
-        #             if result.is_success and result.data:
-        #                 depth_maps = result.data.get("depth_maps")
-        #                 # Add depth maps to initial data for dependent pipelines
-        #                 initial_data["depth_maps"] = depth_maps
+        if self.video_pipeline_factory._needs_depth_anything_processing():
+            shared_pipeline = True
+            try:
+                console.print(
+                    "[cyan]Processing Depth Anything shared pipeline...[/cyan]"
+                )
+                results = await self.video_pipeline_factory.registry.execute_pipeline(
+                    "depth_anything_shared_video", initial_data
+                )
 
-        #     except Exception as e:
-        #         logger.error(f"Error in Depth Anything shared pipeline: {e}")
-        #         console.print(f"Node depth_anything failed: {e}")
+                # Extract depth maps from results if successful
+                if results and "depth_maps" in results:
+                    result = results["depth_maps"]
+                    if result.is_success and result.data:
+                        depth_maps = result.data.get("depth_maps")
+                        # Add depth maps to initial data for dependent pipelines
+                        initial_data["depth_maps"] = depth_maps
+
+            except Exception as e:
+                logger.error(f"Error in Depth Anything shared pipeline: {e}")
+                console.print(f"Node depth_anything failed: {e}")
 
         # Process each enabled video type
         for video_name, settings in self.config.videos.items():
             if not settings.enabled:
+                continue
+
+            if shared_pipeline and video_name in [
+                "depth_anything",
+                "depth_anything_normal",
+            ]:
+                # Skip dependent pipelines if shared pipeline was processed
                 continue
 
             console.print(f"Generating {video_name} video...")

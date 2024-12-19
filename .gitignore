@@ -165,3 +165,5 @@ core/models/depth_anything_v2/checkpoints/*.pth
 !core/models/depth_anything_v2/checkpoints/.gitkeep
 output/*
 !output/.gitkeep
+
+video_config.yaml

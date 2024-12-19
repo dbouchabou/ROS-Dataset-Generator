@@ -36,17 +36,13 @@ class VideoPipelineFactory:
         different processing stages.
         """
         # Check for Depth Anything dependencies
-        # need_depth_anything = self._needs_depth_anything_processing()
-
         # Create shared Depth Anything pipeline if needed
-        # if need_depth_anything:
-        #    self._create_depth_anything_shared_pipeline()
-
-        # if self._needs_depth_anything_processing():
-        # print("SHARED")
-        #    self._create_depth_anything_shared_pipeline()
-        # else:
-        # print("NOT SHARED")
+       
+        if self._needs_depth_anything_processing():
+            print("SHARED")
+            self._create_depth_anything_shared_pipeline()
+        else:
+            print("NOT SHARED")
 
         # Create pipelines for each enabled video type
         for video_name, settings in self.config.videos.items():
